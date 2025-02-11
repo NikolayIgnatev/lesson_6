@@ -19,14 +19,21 @@ def has_symbols(password):
                 for symbol in password])
 
 
-password = input('введите пароль')
+def main():
+    password = input('введите пароль')
+    score = 0
+    functions = [
+        has_digit(password),
+        is_very_long(password),
+        has_upper_letters(password),
+        has_lower_letters(password),
+        has_symbols(password)
+    ]
+    for function in functions:
+        if function:
+            score += 2
+    print('Оценка пароля:', score)
 
-score = 0
-functions = [has_digit(password), is_very_long(password),
-             has_upper_letters(password), has_lower_letters(password),
-             has_symbols(password)]
 
-for function in functions:
-    if function:
-        score += 2
-print('Оценка пароля:', score)
+if __name__ == '__main__':
+    main()
